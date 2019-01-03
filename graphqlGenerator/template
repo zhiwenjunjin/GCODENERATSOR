@@ -1,0 +1,31 @@
+/**
+ * cv [tbn]
+ */
+
+import {[TBn]CreateInput, [TBn]UpdateInput, [TBn]WhereUniqueInput, prisma} from '../../../generated/prisma-client';
+
+const [tBn]:any = {};
+
+[tBn].append = async (
+    data: [TBn]CreateInput
+) => {
+    return prisma.create[TBn](data);
+}
+[tBn].update = async (
+    data: [TBn]UpdateInput,
+    where: [TBn]WhereUniqueInput
+) => {
+    return prisma.update[TBn]({data,where});
+}
+[tBn].delete = async (
+    where: [TBn]WhereUniqueInput
+) => {
+    const data: [TBn]UpdateInput = {
+        isDeleted: true
+    }
+
+    return prisma.update[TBn]({data,where});
+}
+
+
+export {[tBn]};

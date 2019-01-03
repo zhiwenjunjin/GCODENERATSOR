@@ -1,0 +1,4 @@
+  """
+  get [TBn] by ID
+  """
+  get[TBn]ById(input: IDInputType!): [TBn]!

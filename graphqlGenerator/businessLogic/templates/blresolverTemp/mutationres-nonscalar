@@ -1,0 +1,1 @@
+  data.[nonscalar] = [nonscalar]Id ? { connect: { id: [nonscalar]Id } } : undefined;

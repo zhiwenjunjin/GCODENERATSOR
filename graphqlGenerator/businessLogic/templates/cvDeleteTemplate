@@ -1,0 +1,4 @@
+      """
+      delete a [TBn], input: [TBn] id
+      """
+      delete[TBn](input: IDInputType!): [TBn]

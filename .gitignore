@@ -1,0 +1,7 @@
+
+graphqlGenerator/businessLogic/datamodel
+graphqlGenerator/*.ts
+graphqlGenerator/businessLogic/generated/
+graphqlGenerator/businessLogic/SubResolver/
+graphqlGenerator/businessLogic/tmp-resolvers/
+graphqlGenerator/generated/

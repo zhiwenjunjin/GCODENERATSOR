@@ -1,0 +1,14 @@
+
+studentMutation.update[TBn] = async (
+    parent,
+    args: MutationResolvers.ArgsUpdate[TBn],
+    ctx: Context,
+) => {
+    const { input, where } = args;
+
+    const data: any = {
+        ...input,
+    };
+
+    return [tBn].update(data,where);
+}

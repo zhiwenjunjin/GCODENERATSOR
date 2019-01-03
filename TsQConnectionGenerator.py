@@ -6,14 +6,14 @@ class TsQConnectionGenerator:
         
         uc_tbn = ut.uncapitalize(tbn)
         self.query = \
-            'const '+uc_tbn+'Connection = {\n' + \
-            '  type: connectionDefault('+tbn+'ConnectionType),\n' + \
+            'const '+uc_tbn+'sConnection = {\n' + \
+            '  type: connectionDefault('+tbn+'sConnectionType),\n' + \
             '  args: connectionCustomArgs,\n' + \
             '  resolve: (\n' + \
             '    _: GraphQLSchema,\n' + \
             '    args: IPageArgs,\n' + \
             '    { viewer }: { viewer: Common.Viewer },\n' + \
-            '  ) {\n' + \
+            '  ) => {\n' + \
             '    return '+tbn+'.connectionSearch(viewer, args);\n' + \
             '  },\n' + \
             '};\n\n'
@@ -23,7 +23,7 @@ class TsQConnectionGenerator:
             'import connectionDefault, {\n' + \
             '  connectionCustomArgs,\n' + \
             '  IPageArgs,\n' + \
-            '} from \'../../Pagniation/types/PaginationType\';\n' + \
+            '} from \'../../Pagination/types/PaginationType\';\n' + \
             'import '+tbn+' from \'../'+tbn+'\';\n' + \
             'import '+tbn+'sConnectionType from \'../types/'+tbn+'Type\';\n\n' + \
             self.query + \

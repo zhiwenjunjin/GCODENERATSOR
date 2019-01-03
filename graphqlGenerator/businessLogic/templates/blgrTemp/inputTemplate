@@ -1,0 +1,11 @@
+input [TBn]UpdateInput {
+  """
+  [TBn] id
+  """
+  id: String!
+#updateproperty
+}
+
+input [TBn]CreateInput {
+#createproperty
+}

@@ -1,0 +1,7 @@
+
+input [TBn]CreateInput {
+  """
+  cv id
+  """
+  where: IDInputType!
+}

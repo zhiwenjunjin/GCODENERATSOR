@@ -1,10 +1,15 @@
-/* add header here */
+import {
+  GraphQLInputObjectType,
+  GraphQLString,
+} from 'graphql';
+/* not add header here */
+
 interface IMarketingActivityInputType {
   title: string;
   person: string;
 }
 
-/* add descriptions here */
+/* not add descriptions here */
 const MarketingActivityInputType = new GraphQLInputObjectType({
   name: 'MarketingActivityInput',
   fields: () => ({

@@ -1,0 +1,4 @@
+      """
+      edit [TBn]
+      """
+      update[TBn](input: [TBn]Input!): [TBn]

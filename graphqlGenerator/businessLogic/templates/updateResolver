@@ -1,0 +1,21 @@
+
+studentMutation.updateJobIntention = async (
+    parent,
+    args: MutationResolvers.ArgsUpdateJobIntention,
+    ctx: Context,
+) => {
+    const { input, where } = args;
+    const { prisma } = ctx;
+
+    const data: any = {
+        ...input,
+    };
+
+    data.workCity = input.workCity? {connect: input.workCity}: undefined
+    data.industries = input.industries? {connect: input.industries} : undefined
+    data.intentionCompany = input.intentionCompany? {connect: input.intentionCompany} : undefined
+    data.salaryType = input.salaryType? {connect: input.salaryType} : undefined
+    data.jobSeekingStatus = input.jobSeekingStatus? {connect: input.jobSeekingStatus} : undefined
+
+    return jobIntention.update(data,where);
+}

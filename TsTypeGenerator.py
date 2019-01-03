@@ -23,6 +23,12 @@ class TsTypeGenerator:
 
         self.wholeContent = \
             '/* add header here */\n' + \
+            'import {\n' + \
+            '  GraphQLID,\n' + \
+            '  GraphQLNonNull,\n' + \
+            '  GraphQLObjectType,\n' + \
+            '  GraphQLString,\n' + \
+            '} from \'graphql\';\n\n' + \
             self.mainType + \
             self.connectionType + \
             'export { '+tbn+'ConnectionType };\n' + \

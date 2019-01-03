@@ -1,0 +1,12 @@
+  """
+  edit [TBn]
+  """
+  update[TBn](input: [TBn]UpdateInput!): [TBn]
+  """
+  create a [TBn]
+  """
+  create[TBn](input: [TBn]CreateInput!): [TBn]
+  """
+  delete a [TBn], input: [TBn] id
+  """
+  delete[TBn](input: IDInputType!): [TBn]

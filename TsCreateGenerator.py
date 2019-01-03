@@ -22,7 +22,7 @@ class TsCreateGenerator:
         self.wholeContent = \
             'import { GraphQLNonNull, GraphQLSchema } from \'graphql\';\n' + \
             'import '+tbn+' from \'../'+tbn+'\';\n' + \
-            'import '+tbn+'sInputType, {\n' + \
+            'import '+tbn+'InputType, {\n' + \
             '  I'+tbn+'InputType,\n' + \
             '} from \'../types/'+tbn+'InputType\';\n' + \
             'import '+tbn+'Type from \'../types/'+tbn+'Type\';\n\n' + \

@@ -1,0 +1,10 @@
+
+studentMutation.delete[TBn] = async (
+    parent,
+    args: MutationResolvers.ArgsDelete[TBn],
+    ctx: Context,
+) => {
+    const {where} = args;
+
+    return [tBn].delete(where);
+}

@@ -1,0 +1,15 @@
+
+studentMutation.create[TBn] = async (
+    parent,
+    args: MutationResolvers.ArgsCreate[TBn],
+    ctx: Context,
+) => {
+    const {input} = args;
+
+    const data: any = {
+        ...input,
+    };
+  
+    return [tBn].append(data);
+
+};

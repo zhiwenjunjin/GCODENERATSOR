@@ -1,0 +1,50 @@
+
+[modn]Mutation.update[TBn] = async (
+  parent: undefined,
+  args: MutationResolvers.ArgsUpdate[TBn],
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  const { id, /*non-scalar*/...data }: any = {
+    ...input,
+  };
+
+  //nonscalar2id
+
+  return prisma.update[TBn]({ data, where: { id } });
+};
+
+[modn]Mutation.create[TBn] = async (
+  parent: undefined,
+  args: MutationResolvers.ArgsCreate[TBn],
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  const { /*non-scalar*/...data }: any = {
+    ...input,
+  };
+
+  //nonscalar2id
+
+  return prisma.update[TBn](data);
+};
+
+[modn]Mutation.delete[TBn] = async (
+  parent: undefined,
+  args: MutationResolvers.ArgsDelete[TBn],
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  const data: any = {
+    isDeleted: true,
+  };
+
+  return prisma.update[TBn]({ data, input });
+};
+

@@ -1,0 +1,4 @@
+      """
+      create a [TBn]
+      """
+      create[TBn](input: [TBn]CreateInput!): [TBn]

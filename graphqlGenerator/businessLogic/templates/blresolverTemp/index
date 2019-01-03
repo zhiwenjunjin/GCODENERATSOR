@@ -1,0 +1,4 @@
+import { [modn]Mutation } from './mutation';
+import { [modn]Query } from './query';
+
+export { [modn]Query, [modn]Mutation };

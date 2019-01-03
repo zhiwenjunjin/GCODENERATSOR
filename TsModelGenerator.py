@@ -19,12 +19,12 @@ class TsModelGenerator:
             '}\n\n'
 
         self.mainInterfaceStringDocument = \
-            'interface I'+tbn+'Document \n' + \
+            'interface I'+tbn+'Document\n' + \
             '  extends mongoose.Document,\n' + \
             '    I'+tbn+' {\n' + \
             '  id: string;\n' + \
             '  toJSON(): I'+tbn+';\n' + \
-            '} \n\n'
+            '}\n\n'
 
         uc_tbn = self.uncapitalize(tbn)
         self.schemaAddedParam = ''

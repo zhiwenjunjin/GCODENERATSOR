@@ -19,7 +19,11 @@ class TsInputTypeGenerator:
             '});\n\n'
 
         self.wholeContent = \
-            '/* add header here */\n' + \
+            'import {\n' + \
+            '  GraphQLInputObjectType,\n' + \
+            '  GraphQLString,\n' + \
+            '} from \'graphql\';\n' + \
+            '/* add header here */\n\n' + \
             self.mainIInput + \
             self.mainInputType + \
             'export default '+tbn+'InputType;\n' + \

@@ -1,0 +1,10 @@
+[modn]Query.get[TBn]ById = async (
+  _: undefined,
+  args: QueryResolvers.ArgsGet[TBn]ById,
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  return prisma.[tBn](input);
+};

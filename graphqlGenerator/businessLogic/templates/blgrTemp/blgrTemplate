@@ -1,0 +1,13 @@
+type Query {
+#query
+}
+
+type Mutation {
+#mutation
+}
+
+input IDInputType {
+  id: ID!
+}
+
+#input

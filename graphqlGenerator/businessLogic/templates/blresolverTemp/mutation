@@ -1,0 +1,8 @@
+import { MutationResolvers } from '../../generated/graphqlgen';
+import { Context } from '../../types';
+
+const [modn]Mutation: any = {};
+
+//resolvers
+
+export { [modn]Mutation };

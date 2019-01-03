@@ -1,0 +1,21 @@
+[modn]Query.list[TBn]sWithPagination = async (
+  _: undefined,
+  args: QueryResolvers.ArgsList[TBn]sWithPagination,
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  const where: [TBn]WhereInput = {};
+  Object.assign(where, input.where);
+
+  return prisma.[tBn]sConnection({
+    where,
+    orderBy: input.orderBy ? input.orderBy : 'createdAt_DESC',
+    skip: input.skip || undefined,
+    after: input.after || undefined,
+    before: input.before || undefined,
+    first: input.first || undefined,
+    last: input.last || undefined,
+  });
+};
