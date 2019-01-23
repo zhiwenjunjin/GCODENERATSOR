@@ -1,0 +1,30 @@
+
+[modn]Mutation.enable[TBn] = async (
+  parent: undefined,
+  args: MutationResolvers.ArgsEnable[TBn],
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  const data: [TBn]UpdateInput = {
+    status: {connect: {key: 'ONLINE'}},
+  };
+
+  return prisma.update[TBn]({ data, where:{id:input.id} });
+};
+
+[modn]Mutation.disable[TBn] = async (
+  parent: undefined,
+  args: MutationResolvers.ArgsDisable[TBn],
+  ctx: Context,
+) => {
+  const { input } = args;
+  const { prisma } = ctx;
+
+  const data: [TBn]UpdateInput = {
+    status: {connect: {key: 'OFFLINE'}},
+  };
+
+  return prisma.update[TBn]({ data, where:{id:input.id} });
+};

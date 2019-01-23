@@ -1,12 +1,11 @@
 import { QueryResolvers } from '../../generated/graphqlgen';
 import { Context } from '../../types';
+import { /*whereInput*/ } from '../../generated/prisma-client';
 
 const [modn]Query: any = {};
 
-//list resolvers
-
-//list conn resolvers
-
-//getById resolvers
+//query resolvers
+//CUSTOM RESOLVERS
+//END
 
 export { [modn]Query };

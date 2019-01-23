@@ -1,4 +1,12 @@
   """
+  get list of [TBn][s]
+  """
+  list[TBn][s](input: [TBn][s]Input!): [[TBn]]!
+  """
+  get list of [TBn] with pagination
+  """
+  list[TBn][s]WithPagination(input: [TBn][s]Input!): [TBn]Connection
+  """
   get [TBn] by ID
   """
   get[TBn]ById(input: IDInputType!): [TBn]!

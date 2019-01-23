@@ -1,0 +1,8 @@
+  """
+  switch the [TBn] to online, [TBn] id
+  """
+  enable[TBn](input: IDInputType!): [TBn]
+  """
+  switch the [TBn] to offline, [TBn] id
+  """
+  disable[TBn](input: IDInputType!): [TBn]

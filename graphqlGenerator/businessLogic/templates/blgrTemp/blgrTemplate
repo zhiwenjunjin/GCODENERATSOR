@@ -1,9 +1,13 @@
 type Query {
 #query
+#CUSTOM QUERY
+#QUERYEND
 }
 
 type Mutation {
 #mutation
+#CUSTOM MUTATION
+#MUTATIONEND
 }
 
 input IDInputType {
@@ -11,3 +15,5 @@ input IDInputType {
 }
 
 #input
+#CUSTOM INPUT
+#INPUTEND

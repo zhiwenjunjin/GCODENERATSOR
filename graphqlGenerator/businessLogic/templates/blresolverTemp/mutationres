@@ -30,7 +30,7 @@
 
   //nonscalar2id
 
-  return prisma.update[TBn](data);
+  return prisma.create[TBn](data);
 };
 
 [modn]Mutation.delete[TBn] = async (
@@ -41,10 +41,10 @@
   const { input } = args;
   const { prisma } = ctx;
 
-  const data: any = {
+  const data: [TBn]UpdateInput = {
     isDeleted: true,
   };
 
-  return prisma.update[TBn]({ data, input });
+  return prisma.update[TBn]({ data, where:{id:input.id} });
 };
 

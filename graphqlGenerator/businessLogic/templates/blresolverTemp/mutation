@@ -1,8 +1,11 @@
 import { MutationResolvers } from '../../generated/graphqlgen';
+import { /*updateinput*/ } from '../../generated/prisma-client';
 import { Context } from '../../types';
 
 const [modn]Mutation: any = {};
 
 //resolvers
+//CUSTOM RESOLVERS
+//END
 
 export { [modn]Mutation };

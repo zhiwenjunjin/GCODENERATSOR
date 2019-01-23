@@ -1,3 +1,13 @@
+input [TBn][s]Input {
+  where: [TBn]WhereInput
+  orderBy: [TBn]OrderByInput
+  skip: Int
+  after: String
+  before: String
+  first: Int
+  last: Int
+}
+
 input [TBn]UpdateInput {
   """
   [TBn] id

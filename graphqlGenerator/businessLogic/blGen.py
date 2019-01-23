@@ -56,7 +56,86 @@ def updateFileFn2_0(tbn,template,ignore=[],isDeleted=[]):
             else:
                 newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s()'%p))
             tbFileString = tbFileString.replace("throw new Error('Resolver not implemented');",newString,1)
-        tbFile = open(('SubResolver/%s.ts'%tbn),'w')
+        
+
+        genDir = 'SubResolver'
+        if not os.path.exists(genDir):
+            os.mkdir(genDir)
+        tbFile = open(('%s/%s.ts'%(genDir,tbn)),'w')
+        tbFile.write(tbFileString)
+
+def updateFileFn3_0(tbn,template,ignore=[],isDeleted=[],throw_ignore=[]):
+    if(tbn not in ignore):
+        tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
+        tbFileString = tbFile.read()
+        tbFileString = tbFileString.replace('\'../graphqlgen','\'../../generated/graphqlgen')
+        props = re.findall(r'\w+: \(p',tbFileString)
+        tempFile = open(template,'r')
+        tempString = tempFile.read()
+        rawConnTbn = re.findall(r'(\w+)Connection',tbn)
+        uc_tbn = ''
+        if rawConnTbn:
+            rawConnTbn = rawConnTbn[0]
+            # print('fucking',rawConnTbn,'%se'%rawConnTbn if ut.check_end_with_s(rawConnTbn) else ('%s<-ie'%rawConnTbn if ut.check_end_with_y(rawConnTbn) and not ut.check_sec_last_end_with_a(rawConnTbn) else rawConnTbn))
+            uc_tbn = ut.uncapitalize('%ssConnection'%('%se'%rawConnTbn if ut.check_end_with_s(rawConnTbn) else ('%s<-ie'%rawConnTbn if ut.check_end_with_y(rawConnTbn) and not ut.check_sec_last_end_with_a(rawConnTbn) else rawConnTbn))).replace('y<-','')
+        else:
+            uc_tbn = ut.uncapitalize(tbn)
+        
+        # print(tbn,throw_ignore,props)
+        if tbn not in throw_ignore:
+            for p in props:
+                p = p.split(':')[0]
+                # print(ut.capitalize(p), ut.capitalize(p) in isDeleted)
+                newString = ''
+                if(p=='aggregate'):
+                    newString = tempString.replace('[tbn]','%s()'%uc_tbn).replace('[propn]',('%s()'%p))
+                elif(ut.capitalize(p)[:-1] in isDeleted):
+                    newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s({ where: { isDeleted: false } })'%p))
+                else:
+                    newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s()'%p))
+                tbFileString = tbFileString.replace("throw new Error('Resolver not implemented')",newString,1)
+
+        genDir = 'generated/SubResolver'
+        if not os.path.exists(genDir):
+            os.mkdir(genDir)
+        tbFile = open(('%s/%s.ts'%(genDir,tbn)),'w')
+        tbFile.write(tbFileString)
+
+def updateFileFn4_0(tbn,template,ignore=[],isDeletedProps=[],throw_ignore=[]):
+    if(tbn not in ignore):
+        tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
+        tbFileString = tbFile.read()
+        tbFileString = tbFileString.replace('\'../graphqlgen','\'../../generated/graphqlgen')
+        props = re.findall(r'\w+: \(p',tbFileString)
+        tempFile = open(template,'r')
+        tempString = tempFile.read()
+        rawConnTbn = re.findall(r'(\w+)Connection',tbn)
+        uc_tbn = ''
+        if rawConnTbn:
+            rawConnTbn = rawConnTbn[0]
+            # print('fucking',rawConnTbn,'%se'%rawConnTbn if ut.check_end_with_s(rawConnTbn) else ('%s<-ie'%rawConnTbn if ut.check_end_with_y(rawConnTbn) and not ut.check_sec_last_end_with_a(rawConnTbn) else rawConnTbn))
+            uc_tbn = ut.uncapitalize('%ssConnection'%('%se'%rawConnTbn if ut.check_end_with_s(rawConnTbn) else ('%s<-ie'%rawConnTbn if ut.check_end_with_y(rawConnTbn) and not ut.check_sec_last_end_with_a(rawConnTbn) else rawConnTbn))).replace('y<-','')
+        else:
+            uc_tbn = ut.uncapitalize(tbn)
+        
+        # print(tbn,throw_ignore,props)
+        if tbn not in throw_ignore:
+            for p in props:
+                p = p.split(':')[0]
+                # print(ut.capitalize(p), ut.capitalize(p) in isDeleted)
+                newString = ''
+                if(p=='aggregate'):
+                    newString = tempString.replace('[tbn]','%s()'%uc_tbn).replace('[propn]',('%s()'%p))
+                elif(p in isDeletedProps):
+                    newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s({ where: { isDeleted: false } })'%p))
+                else:
+                    newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s()'%p))
+                tbFileString = tbFileString.replace("throw new Error('Resolver not implemented')",newString,1)
+
+        genDir = 'generated/SubResolver'
+        if not os.path.exists(genDir):
+            os.mkdir(genDir)
+        tbFile = open(('%s/%s.ts'%(genDir,tbn)),'w')
         tbFile.write(tbFileString)
 
 
@@ -76,9 +155,12 @@ if __name__ == '__main__':
     temp = 'templates/returnNICE'
     dirName = 'tmp-resolvers'
     ignore = ['index','Mutation','Query']
+    throw_ignore = ['CountryResult','SessionTemplate']
     ignorePattern = 'Get\w+Result'
 
     isdFile = open('generated/isDeleted','r')
     isdList = isdFile.read().split('\n')
 
-    simplestModel.updateFilesInDir(dirName,updateFileFn2_0,temp,ignore,isdList)
+    # simplestModel.updateFilesInDir(dirName,updateFileFn2_0,temp,ignore,isdList)
+    simplestModel.updateFilesInDir2_0(dirName,updateFileFn3_0,temp,ignore,isdList,throw_ignore)
+    # updateFileFn3_0('ServiceSheet',temp,ignore,isdList,throw_ignore)
