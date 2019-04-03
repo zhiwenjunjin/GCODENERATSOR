@@ -4,9 +4,9 @@ import os
 import re
 
 def convertFn(tbn,template,export,ignore=[]):
-    tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel/%s'%tbn),'r')
+    tbFile = open(('/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel/%s'%tbn),'r')
     tbFileString = tbFile.read()
-    isDeleted = re.findall(r'type (\w+)\s*{[^{]*?isDeleted\: Boolean!? \@default\(value\: false\)',tbFileString,flags=re.DOTALL)
+    isDeleted = re.findall(r'type (\w+)\s*{[^{]*?isDeleted\:\s*Boolean!? \@default\(value\: false\)',tbFileString,flags=re.DOTALL)
     # print(isDeleted,tbn)
     newFile = open('generated/%s'%export,'r')
     newString = newFile.read()
@@ -19,23 +19,26 @@ def convertFn(tbn,template,export,ignore=[]):
     newFile.write(newString)
 
 def accurateConvert(tbn,template,export,ignore=[],isDeleted=[]):
-    tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel/%s'%tbn),'r')
+    tbFile = open(('/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel/%s'%tbn),'r')
     tbFileString = tbFile.read()
     
-    relatedProps = re.findall(r'(\w+):\s*\[(\w+)',tbFileString)
+    current_tbns = re.findall(r'type (\w+)\s?{(.*?)}',tbFileString,flags=re.DOTALL)
+    relatedProps = map((lambda (a,b):(a,re.findall(r'(\w+):\s*\[(\w+)',b,flags=re.DOTALL))),current_tbns)
+    
 
     newFile = open('generated/%s'%export,'r')
     newString = newFile.read()
 
-    for prop,tbn in relatedProps:
-        if tbn in isDeleted:
-            newString = newString.replace('#props',('%s\n#props'%prop))
+    for curr_tbn, prop_tbn in relatedProps:
+        for prop, tbn in prop_tbn:
+            if tbn in isDeleted:
+                newString = newString.replace('#props',('%s-%s\n#props'%(curr_tbn,prop)))
 
     newFile = open('generated/%s'%export,'w')
     newFile.write(newString)
 
 def readStatus(tbn,template,export,ignore=[]):
-    tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel/%s'%tbn),'r')
+    tbFile = open(('/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel/%s'%tbn),'r')
     tbFileString = tbFile.read()
     status = re.findall(r'type (\w+)\s*{[^{]*?\: StaticCommonStatusEnum',tbFileString,flags=re.DOTALL)
     # print(isDeleted,tbn)

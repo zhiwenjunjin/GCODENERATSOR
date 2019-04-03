@@ -151,7 +151,7 @@ class SimpleTsModel:
 
 if __name__ == '__main__':
     stm = SimpleTsModel(
-        path='/Users/junjinchen/Documents/GitHub/zhiwen-api/src/schema/',
+        path='/Users/junjinchen/Documents/Bitbucket/zhiwen-api/src/schema/',
         tbn='MarketingActivityWechatGroup',
         listOfParam=['marketingActivityId','groupName','peopleLimit','groupLeader','QRCode','QRCodeExpiredBy','Note']
         )

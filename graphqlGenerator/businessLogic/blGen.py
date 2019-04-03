@@ -66,7 +66,7 @@ def updateFileFn2_0(tbn,template,ignore=[],isDeleted=[]):
 
 def updateFileFn3_0(tbn,template,ignore=[],isDeleted=[],throw_ignore=[]):
     if(tbn not in ignore):
-        tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
+        tbFile = open(('/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
         tbFileString = tbFile.read()
         tbFileString = tbFileString.replace('\'../graphqlgen','\'../../generated/graphqlgen')
         props = re.findall(r'\w+: \(p',tbFileString)
@@ -103,7 +103,7 @@ def updateFileFn3_0(tbn,template,ignore=[],isDeleted=[],throw_ignore=[]):
 
 def updateFileFn4_0(tbn,template,ignore=[],isDeletedProps=[],throw_ignore=[]):
     if(tbn not in ignore):
-        tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
+        tbFile = open(('/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
         tbFileString = tbFile.read()
         tbFileString = tbFileString.replace('\'../graphqlgen','\'../../generated/graphqlgen')
         props = re.findall(r'\w+: \(p',tbFileString)
@@ -126,7 +126,8 @@ def updateFileFn4_0(tbn,template,ignore=[],isDeletedProps=[],throw_ignore=[]):
                 newString = ''
                 if(p=='aggregate'):
                     newString = tempString.replace('[tbn]','%s()'%uc_tbn).replace('[propn]',('%s()'%p))
-                elif(p in isDeletedProps):
+                elif('%s-%s'%(tbn,p) in isDeletedProps):
+                    print(tbn,p)
                     newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s({ where: { isDeleted: false } })'%p))
                 else:
                     newString = tempString.replace('[tbn]','%s({ id: parent.id })'%uc_tbn).replace('[propn]',('%s()'%p))

@@ -16,7 +16,7 @@ if __name__ == '__main__':
         os.mkdir(genDir)
 
     #read status
-    dirName = '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel'
+    dirName = '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel'
     export = ('theStatus','#switchable')
 
     simplestModel.convertFilesInDir(dirName,dr.readStatus,export)
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     temps = [qs,ms,ins,blgrs,stTemp]
 
-    prghDir = '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel'
+    prghDir = '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel'
 
     simplestModel.convertFilesInDir2_0(prghDir,p2b.graphql2graphqlConverter,temps,ign,scalarTs,stList)
 
@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
 
     #read is-deleted
-    dirName = '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel'
+    dirName = '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel'
     export = ('isDeleted','#deletable')
 
     genDir = 'generated'
@@ -73,9 +73,9 @@ if __name__ == '__main__':
 
     #update resolver files
     temp = 'templates/returnNICE'
-    dirName = '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers'
+    dirName = '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/src/generated/tmp-resolvers'
     ignore = ['index','Mutation','Query']
-    throw_ignore = ['CountryResult','SessionTemplate']
+    throw_ignore = ['CountryResult','SessionTemplate','SubscribingResult']
     ignorePattern = 'Get\w+Result'
 
     isdProps = open('generated/isDeletedProps','r').read().split('\n')
@@ -86,13 +86,13 @@ if __name__ == '__main__':
 
 
     temp = 'templates/returnNICE'
-    dirName = '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers'
+    dirName = '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/src/generated/tmp-resolvers'
     ignore = ['index','Mutation','Query']
     ignorePattern = 'Get\w+Result'
 
     isdFile = open('generated/isDeleted','r')
     isdList = isdFile.read().split('\n')
-    unchangedFile=['Tutor.ts']
-    undir = '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/resolvers/SubResolver'
+    unchangedFile=['Tutor.ts','StaticAgreementCompanyEnum.ts']
+    undir = '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/src/resolvers/SubResolver'
 
     simplestModel.updateFilesInDir3_0(dirName,igen.updateFileFn2_0,temp,ignore,isdList,unchanged=unchangedFile,undir=undir)

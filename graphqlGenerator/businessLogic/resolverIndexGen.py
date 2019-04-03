@@ -37,12 +37,12 @@ def updateFileFn(tbn,template,ignore=[]):
 
 def updateFileFn2_0(tbn,template,ignore=[],isDeleted=[]):
     if(tbn in ignore):
-        tbFile = open(('/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
+        tbFile = open(('/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/src/generated/tmp-resolvers/%s.ts'%tbn),'r')
         tbFileString = tbFile.read()
         tbFileString = tbFileString.replace('\'../graphqlgen','\'../generated/graphqlgen')
         tbFileString = tbFileString.replace('\'./','\'./SubResolver/')
         tbFileString = tbFileString.replace('SubResolver/Mutation\'','Mutation\'')
-        tbFileString = tbFileString.replace('SubResolver/Query','Query')
+        tbFileString = tbFileString.replace('SubResolver/Query\'','Query\'')
         
         genDir = 'generated/Resolver'
         if not os.path.exists(genDir):

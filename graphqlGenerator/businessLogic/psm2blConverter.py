@@ -7,7 +7,7 @@ def graphql2graphqlConverter(pgname,templateStrings=[],ignoreProps=[],scalarType
     #read the prisma graphql file
     pgrph = open(pgname,'r')
     pgrghString = pgrph.read()
-    # if pgname == '/Users/junjinchen/Documents/GitHub/rainbow-parrotfish/prisma/datamodel/course.graphql':
+    # if pgname == '/Users/junjinchen/Documents/Bitbucket/rainbow-parrotfish/prisma/datamodel/course.graphql':
     #     print (pgrghString)
     #get the types
     toTuple = map((lambda (a,b):(a,re.findall(r'(\s{2}?"""[^[]*?""")?\n\s*(\w+):\s*([A-Z]\w+)(!*)',b,flags=re.DOTALL)) ),re.findall(r'type\s+(\w+)\s*{(.*?)}',pgrghString,flags=re.DOTALL))
